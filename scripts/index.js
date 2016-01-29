@@ -1,20 +1,28 @@
 window.onload=function(){
+
+
 var wuscene=document.getElementById('wu-scene');
-var ROW=15;
-var bian=Math.floor(600-ROW)/ROW;
+var ROW=15;//行列
+
+var bian=Math.floor((600-ROW)/ROW);//块的宽度
+
 var hengxian,shuxian;
+
 var zhe=document.createElement('div');
     wuscene.appendChild(zhe);
     zhe.setAttribute('class','zhe');
     zhe.innerHTML='game over!'
+
 var re=document.createElement('div');
     re.setAttribute('class','re');
     re.innerHTML='replay';
+
 var win=document.createElement('div');
     win.setAttribute('class','win');
+
     zhe.appendChild(win);
     zhe.appendChild(re);
-
+//画线
 for(var i=0;i<ROW;i++){
     hengxian=document.createElement('div');
     wuscene.appendChild(hengxian);
@@ -24,23 +32,24 @@ for(var i=0;i<ROW;i++){
     wuscene.appendChild(shuxian);
     shuxian.setAttribute('class','shuxian');
     shuxian.style.left=(600)/ROW/2+(600)/ROW*i+'px';
-
-
 }
+//画块
+var kuai;
 for(var i=0;i<ROW;i++){
     for(var j=0;j<ROW;j++){
-        var kuai=document.createElement('div');
+        kuai=document.createElement('div');
         wuscene.appendChild(kuai);
         kuai.style.width=bian+'px';
         kuai.style.height=bian+'px';
         kuai.setAttribute('class','block1');
         kuai.setAttribute('id',i+'_'+j);
-
     }
-
 }
-var wukaiguan=true;
-var dict1={},dict2={'0_0':true};
+
+
+
+var dict1={},dict2={};//两个字典分别放白棋和黑棋
+//判断是否能赢
 var pan=function(idd,dic){
     var x=Number(idd.split('_')[0]);
     var y=Number(idd.split('_')[1]);
@@ -77,36 +86,30 @@ var pan=function(idd,dic){
 
 
 };
-console.log(pan('1_1',dict2));
+
+
 var block1s=document.getElementsByClassName('block1');
 
-  
 var wustart=document.getElementById('wustart');
 var wureplay=document.getElementById('wureplay');
-// var wupause=document.getElementById('wupause');
-// var wuwukai=true;
 wureplay.onclick=function(){
     location.reload();
 }
-wustart.onclick=function(){
 
+var wukaiguan=true;//黑白棋交替出现
+//点击放棋子
+wustart.onclick=function(){
 
     for(var i=0;i<block1s.length;i++){
         block1s[i].onclick=function(){
-            if(zhe.style.display=='block'){return;}
-            // this.style.position='relative';
-            // this.style.zIndex=99;
-            if(this.hasAttribute('hasColor')){return;}
+            if(zhe.style.display=='block'){return;}//赢了就不可以在下棋了
+            if(this.hasAttribute('hasColor')){return;}//这个位置有了棋子就不能再下棋在这个地方
 
             if(wukaiguan){
-                 this.style.background='url(./images/hei.png)';
-                 this.style.backgroundSize='cover';
+                this.style.background='url(./images/hei.png)';
+                this.style.backgroundSize='cover';
                 wukaiguan=false;
                 dict1[this.getAttribute('id')]=true;
-                // console.log(dict1);
-                // console.log(Number(this.getAttribute('id').split('-')[0]));
-                // console.log(this.getAttribute('id').split('-')[1]);
-               // console.log(pan(this.getAttribute('id'),dict1));
                 if(pan(this.getAttribute('id'),dict1)){
                     zhe.style.display='block';
                     win.innerHTML='black is winner';

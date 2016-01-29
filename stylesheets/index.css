@@ -1,10 +1,11 @@
 body{
+	width: 100%;
+	height: 100%;
 	font-family: '微软雅黑';
-	/*height: 10000px;*/
 	margin:0;
 	min-width: 640px;
-	/*background:#7777F5;*/
-
+	background: url(../images/bg1.jpg) ;
+	background-size: cover;
 }
 .content{
 	position: relative;
@@ -14,6 +15,25 @@ body{
 	margin: 0 auto;
 	border-radius: 20px;
 	background: #935927;
+}
+.lan,.lan1{
+
+	position: absolute;
+	right: -178px;
+	top: 200px;
+	width: 150px;
+	height: 150px;
+	background: url(../images/tt.png);
+	background-size: cover;
+	
+	
+}
+.lan1{
+	position: absolute;
+	left: -178px;
+	top: 200px;
+	background: url(../images/tt2.png);
+	background-size: cover;
 }
 #wureplay{
 	display: inline-block;
@@ -39,16 +59,7 @@ body{
 	color:white;
 	cursor: pointer;
 }
-/*#wupause{
-	display: inline-block;
-	padding: 5px 20px;
-	position: absolute;
-	right: 63px;
-	top: 150px;
-	color:white;
-	border-radius: 30px;
-	background: rgba(0,0,0,0.5);
-}*/
+
 #wu-scene{
 	width: 600px;
 	height: 600px;
@@ -65,8 +76,7 @@ body{
 	-webkit-transform:scale(0.9,0.9);
 	border-radius: 50%;
 	float: left;
-	/*background: black;
-	opacity: 0.5;*/
+
 }
 .hengxian{
 	width: 600px;
@@ -86,7 +96,6 @@ body{
 .win{
 	height:40px;
 	padding: 0 20px 0 20px;
-	border-radius: 10px;
 	position: absolute;
 	top:30px;
 	left:125px;
